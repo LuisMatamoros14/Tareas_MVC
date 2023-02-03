@@ -27,3 +27,23 @@ async function manejarFocusoutTituloTarea(tarea) {
         //mostrar error
     }
 }
+
+async function ObtenerTareas() {
+    tareaListadoViewModel.cargando(true);
+    const respuesta = await fetch(urlTareas, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    });
+    if (!respuesta.ok) {
+        return;
+    }
+
+    const json = respuesta.json();
+    tareaListadoViewModel.tareas([]);
+
+    json.forEach(valor => {
+        tareaListadoViewModel.tareas.push(new tareaElementoListadoViewModel(valor));
+    });
+
+    tareaListadoViewModel.cargando(false);
+}
