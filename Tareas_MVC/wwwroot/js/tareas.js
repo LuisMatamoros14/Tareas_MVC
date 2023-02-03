@@ -28,7 +28,7 @@ async function manejarFocusoutTituloTarea(tarea) {
     }
 }
 
-async function ObtenerTareas() {
+async function obtenerTareas() {
     tareaListadoViewModel.cargando(true);
     const respuesta = await fetch(urlTareas, {
         method: 'GET',
@@ -38,7 +38,7 @@ async function ObtenerTareas() {
         return;
     }
 
-    const json = respuesta.json();
+    const json = await respuesta.json();
     tareaListadoViewModel.tareas([]);
 
     json.forEach(valor => {
