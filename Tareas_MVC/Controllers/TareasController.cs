@@ -24,7 +24,7 @@ namespace Tareas_MVC.Controllers
 
         [HttpGet]
         public async Task<List<TareaDTO>> Get()
-        {
+        {            
             var usuarioId = servicioUsuarios.ObtenerUsuarioId();
             var tareas = await context.Tareas.Where(t => t.UsuarioCreacionId == usuarioId)
                             .OrderBy(t => t.Orden)

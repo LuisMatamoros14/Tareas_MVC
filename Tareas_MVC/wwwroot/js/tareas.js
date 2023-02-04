@@ -24,7 +24,7 @@ async function manejarFocusoutTituloTarea(tarea) {
         const json = await respuesta.json();
         tarea.id(json.id);
     } else {
-        //mostrar error
+        manejarErrorApi(respuesta);
     }
 }
 
@@ -35,6 +35,7 @@ async function obtenerTareas() {
         headers: {'Content-Type': 'application/json'}
     });
     if (!respuesta.ok) {
+        manejarErrorApi(respuesta);
         return;
     }
 
