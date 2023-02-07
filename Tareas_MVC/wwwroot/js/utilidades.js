@@ -20,3 +20,22 @@ function mostrarMensajeError(mensaje) {
         text: mensaje
     });
 }
+
+function confirmarAccion({ callbackAceptar, callbackCancelar, titulo }) {
+    swal.fire({
+        title: titulo || "Realmente deseas eliminar la tarea?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si",
+        focusConfirm: true
+    }).then((resultado)=>{
+        if (resultado.isConfirmed) {
+            callbackAceptar();
+        } else if (callbackCancelar) {
+            //algo
+            callbackCancelar();
+        }
+    });
+}
