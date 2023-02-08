@@ -173,5 +173,10 @@ async function manejarClickTarea(tarea) {
     tareaEditarVM.titulo(json.titulo);
     tareaEditarVM.descripcion(json.descripcion);
 
+    tareaEditarVM.pasos([]);
+    json.pasos.forEach(paso => {
+        tareaEditarVM.pasos.push( new pasoViewModel({ ...paso, modoEdicion: false }) );
+    });
+
     modalEditarTareaBS.show();
 }

@@ -8,6 +8,7 @@ using System.Globalization;
 using Tareas_MVC;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Tareas_MVC.Servicios;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var politicaUsuariosAutenticados = new AuthorizationPolicyBuilder()
@@ -22,6 +23,9 @@ builder.Services.AddControllersWithViews(options =>
 .AddDataAnnotationsLocalization(options =>
 {
     options.DataAnnotationLocalizerProvider = (_, factoria) => factoria.Create(typeof(RecursoCompartido));
+}).AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("name= DefaultConnection"));

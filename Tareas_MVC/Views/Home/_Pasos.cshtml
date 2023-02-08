@@ -11,9 +11,13 @@
                 <input type="checkbox" class="form-check-input" name="chbPaso" data-bind="{checked: realizado}"/>
             </div>
             <div class="col-11">
-                <span data-bind="tetx: descripcion, hidden: modoEdicion"></span>
+                <span data-bind="text: descripcion, hidden: modoEdicion"></span>
                 <textarea name="txtPasoDescripcion" class="form-control" placeholder="Agregar descripcion" 
                     data-bind="{value: descripcion, visible: modoEdicion}"></textarea>
+                    <div class="mt-2" data-bind="{visible: modoEdicion}">
+                        <button class="btn btn-primary" data-bind="{click: manejarClickSalvarPaso}">Guardar</button>
+                        <button class="btn btn-secondary" data-bind="{click: manejarClickCancelarPaso}">Cancelar</button>
+                    </div>
             </div>
         </div>
     </div>

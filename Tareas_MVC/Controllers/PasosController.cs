@@ -24,7 +24,7 @@ namespace Tareas_MVC.Controllers
             var usuarioId = servicioUsuarios.ObtenerUsuarioId();
             var tarea = await context.Tareas.FirstOrDefaultAsync(t => t.Id == tareaId);
             
-            if (tarea == null)
+            if (tarea is null)
             {
                 return NotFound();
             }
@@ -46,7 +46,7 @@ namespace Tareas_MVC.Controllers
             var paso = new Paso();
             paso.TareaId = tareaId;
             paso.Descripcion = pasoCrearDTO.Descripcion;
-            paso.Orden = ordenMayor;
+            paso.Orden = ordenMayor +1;
             paso.Realizado = pasoCrearDTO.Realizado;
 
             context.Add(paso);
