@@ -17,6 +17,9 @@
                             <label>Descripcion</label>
                             <textarea type="text" class="form-control" rows="4" data-bind="value:descripcion,event:{change:manejarCambioEditarTarea}"></textarea>
                         </div>
+                        <div class="mb-3">
+                            <partial name="_Pasos"/>
+                        </div>
                     </div>
                     <div class="col-lg-3">
                         <button class="btn btn-secondary w-100 mb-2 text-start" data-bind="{click: intentarBorrarTarea}">
