@@ -3,7 +3,10 @@
 <input type="file" id="archivoATarea" multiple style="display:none" onchange="manejarSeleccionArchivoTarea(event)"/>
 <div data-bind="foreach: archivosAdjuntos">
     <div>
-        <div style="cursor:pointer" data-bind="text:titulo"></div>
+        <div style="cursor:pointer" class="fw-bold" data-bind="text:titulo, hidden: modoEdicion, click: manejarClickTituloArchivoAdjunto"></div>
+        <div data-bind="visible:modoEdicion, event:{focusout: manejarFocusoutTituloArchivoAdjunto}">
+            <input name="txtArchivoAdjuntoTitulo" class="form-control" type="text" data-bind="value:titulo, attr:{'data-id':id}" />
+        </div>
         <div>
             Agregado <spand data-bind="text:publicado"></spand> - 
             <span class="fw-bold" style="cursor:pointer">Borrar</span> -
