@@ -183,5 +183,7 @@ async function manejarClickTarea(tarea) {
         tareaEditarVM.pasos.push( new pasoViewModel({ ...paso, modoEdicion: false }) );
     });
 
+    prepararArchivosAdjuntos(json.archivosAdjuntos);
+
     modalEditarTareaBS.show();
 }
